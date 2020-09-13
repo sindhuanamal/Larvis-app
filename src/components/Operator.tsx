@@ -23,7 +23,7 @@ function CurrentOrder() {
 
     useEffect(() => {
         fetchCoffeeOrders();
-    }, []);
+    }, [coffeeOrders]);
     console.log('coffeeorders', coffeeOrders);
     let orders = coffeeOrders.map((order, key) => {
       return (
@@ -40,7 +40,7 @@ function CurrentOrder() {
     });
     return (
       <OrderList>
-        <div className="container">
+        <div>
           <h2>Current Orders</h2>
           <table className="table">
             <thead>
@@ -70,10 +70,9 @@ function CurrentOrder() {
   }
 
 function Operator() {
-    const [operatorName, setOperatorName] = React.useState('');
-    const [marshmallowNumber, setMarshmallowNumber] = React.useState('');
     const operatorNameRef = React.useRef<HTMLInputElement>(null);
     const marshMallowNumberRef = React.useRef<HTMLSelectElement>(null);
+    const codeRef = React.useRef<HTMLSelectElement>(null);
     let coffees = ['Latte', 'Soy Latte', 'Flat White', 'Long Black', 'Cappuccino', 'Mocha'];
     let marshmallowNumberValues = [1,2,3,4,5,6,7,8];
 
@@ -90,6 +89,7 @@ function Operator() {
         let newOrder = {
           operator_name: operatorNameRef && operatorNameRef.current && operatorNameRef.current.value,
             marshmallow_number: marshMallowNumberRef && marshMallowNumberRef.current && marshMallowNumberRef.current.value,
+            code: codeRef && codeRef.current && codeRef.current.value,
         };
         console.log('newOrder', newOrder);
          const coffeeOrders = await fetch('/orders/createOrder',{
@@ -97,6 +97,7 @@ function Operator() {
           headers: {'Content-type':'application/json','Cache-Control': 'no-cache'},
           body:JSON.stringify(newOrder)
         }).then(r=>r.json());
+
   };
 
     return (
@@ -124,7 +125,8 @@ function Operator() {
               <div>
                 <Select
                   required
-                  name="coffee">
+                  name="coffee"
+                  ref={codeRef}>
                   <option defaultValue=''>Please Select</option>
                   {coffeeTypes}
                 </Select>
