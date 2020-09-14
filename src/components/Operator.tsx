@@ -12,7 +12,7 @@ interface CoffeeOrdersUI {
 }
 
 function CurrentOrder() {
-  const [coffeeOrders, setCoffeeOrders] = useState<CoffeeOrdersUI[]>([])
+  const [coffeeOrders, setCoffeeOrders] = useState<CoffeeOrdersUI[]>([]);
   const fetchCoffeeOrders = async () => {
   const coffeeOrders = await fetch('/orders/all')
     .then(res => res.json());
@@ -231,7 +231,7 @@ const NoOrdersText = styled.div`
 const PlaceOrder = styled.input`
   margin-left: 136px;
   margin-top: 32px;
-  background-color: #007DC5;
+  background-color: #31708f;
   height: 32px;
   border-radius: 16px;
   padding: 4px 24px;
@@ -240,6 +240,7 @@ const PlaceOrder = styled.input`
   font-weight: 500;
   font-size: 14px;
   border: none;
+  outline: none;
 `;
 
 export default Operator;
