@@ -1,9 +1,9 @@
 .filterable-table-container {
-    padding: 32px;
+  padding: 32px;
 }
 
 .filter-container .close.clear-filter {
-    top: -1px;
+  top: -1px;
 }
 
 .filterable-table-container .header-row .exact-filters {
@@ -11,10 +11,10 @@
 }
 
 .filterable-table-container .header-row .record-count {
-    font-size: 14px;
-    font-weight: 500;
-    padding-top: 7px;
-    color: #337ab7;
+  font-size: 14px;
+  font-weight: 500;
+  padding-top: 7px;
+  color: #337ab7;
 }
 
 .filterable-table-container table.filterable-table thead tr th {
